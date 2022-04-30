@@ -5,15 +5,10 @@ from selenium import webdriver
 from webdriver_manager.chrome import ChromeDriverManager
 from utils import crawling_tool
 import csv
-soup=BeautifulSoup(crawling_tool.get_content("http://www.shippingnewsnet.com/news/articleView.html?idxno=47412"),"html.parser")
 
-
-
-f = open('utils/result/crawling.txt','a')
-f.write("hellow ")
-f.close()
-
-print(crawling_tool.get_data("http://www.shippingnewsnet.com/news/articleView.html?idxno=47412"))
+urls=crawling_tool.find_href(crawling_tool.get_content("http://www.nlic.go.kr/nlic/newspaperLi.action"))
+print(urls)
+crawling_tool.write_to_csv(urls,file_path="./utils/result/crawling.txt")
 #driver = webdriver.Chrome(ChromeDriverManager().install())
 #url='https://google.com'
 
